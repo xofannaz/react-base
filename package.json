@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=22.0.0",
+    "node": ">=22.11.0",
     "yarn": ">=1.22.0",
     "npm": "please-use-yarn"
   },
@@ -11,7 +11,11 @@
     "build": "react-router build",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc"
+    "typecheck": "react-router typegen && tsc",
+    "test": "echo \"ERR: (WIP) script not yet supported\"",
+    "lint": "eslint \"**/*.{js,ts,jsx,tsx,json}\"",
+    "format": "prettier --write .",
+    "postinstall": "husky"
   },
   "dependencies": {
     "@react-router/node": "^7.1.5",
@@ -22,14 +26,26 @@
     "react-router": "^7.1.5"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.7.1",
+    "@commitlint/config-conventional": "^19.7.1",
+    "@eslint/js": "^9.20.0",
     "@react-router/dev": "^7.1.5",
     "@tailwindcss/vite": "^4.0.0",
     "@types/node": "^20",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.1",
+    "eslint": "^9.20.1",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
+    "pinst": "^3.0.0",
     "react-router-devtools": "^1.1.0",
     "tailwindcss": "^4.0.0",
-    "typescript": "^5.7.2",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.24.0",
     "vite": "^5.4.11",
     "vite-tsconfig-paths": "^5.1.4"
   }
