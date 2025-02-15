@@ -12,7 +12,8 @@
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
-    "test": "echo \"ERR: (WIP) script not yet supported\"",
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
     "lint": "eslint \"**/*.{js,ts,jsx,tsx,json}\"",
     "format": "prettier --write .",
     "postinstall": "husky"
@@ -31,15 +32,22 @@
     "@eslint/js": "^9.20.0",
     "@react-router/dev": "^7.1.5",
     "@tailwindcss/vite": "^4.0.0",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
     "@types/node": "^20",
-    "@types/react": "^19.0.1",
-    "@types/react-dom": "^19.0.1",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@vitest/coverage-v8": "3.0.5",
+    "cross-env": "^7.0.3",
     "eslint": "^9.20.1",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.1.0",
+    "global-jsdom": "^26.0.0",
     "husky": "^9.1.7",
+    "jsdom": "^26.0.0",
     "lint-staged": "^15.4.3",
     "pinst": "^3.0.0",
     "react-router-devtools": "^1.1.0",
@@ -47,6 +55,7 @@
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.24.0",
     "vite": "^5.4.11",
-    "vite-tsconfig-paths": "^5.1.4"
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.0.5"
   }
 }
