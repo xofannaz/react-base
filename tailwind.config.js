@@ -1,6 +1,10 @@
+import daisyui from "daisyui";
+
+/** @type {import('tailwindcss').Config} */
 export default {
-  important: "#root",
-  corePlugins: {
-    preflight: false,
+  content: ["./app/**/*.{ts,js,tsx,jsx}"],
+  theme: {
+    extend: {},
   },
+  plugins: [daisyui],
 };
