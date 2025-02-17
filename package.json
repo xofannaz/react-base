@@ -1,5 +1,5 @@
 {
-  "name": "smile-project",
+  "name": "customer-rewards-plarform",
   "private": true,
   "type": "module",
   "engines": {
@@ -19,9 +19,6 @@
     "postinstall": "husky"
   },
   "dependencies": {
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
-    "@mui/material": "^6.4.4",
     "@react-router/node": "^7.1.5",
     "@react-router/serve": "^7.1.5",
     "isbot": "^5.1.17",
