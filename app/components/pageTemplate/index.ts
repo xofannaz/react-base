@@ -1,1 +1,1 @@
-export { PageTemplate } from "./pagetemplate";
+export { PageTemplate, type PageTemplateProps } from "./pagetemplate";

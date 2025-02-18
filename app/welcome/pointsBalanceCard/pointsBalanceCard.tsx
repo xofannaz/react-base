@@ -9,7 +9,10 @@ export const PointsBalanceCard = () => {
   }
 
   return (
-    <div className="card lg:card-side bg-base-300 text-base-content shadow-xl">
+    <div
+      id="balance"
+      className="card lg:card-side bg-base-300 text-base-content shadow-xl"
+    >
       <figure>
         <img
           alt=""
