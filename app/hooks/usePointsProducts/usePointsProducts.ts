@@ -8,6 +8,8 @@ export const usePointsProducts = (): PointsProduct[] | undefined => {
   >();
 
   useEffect(() => {
+    if (pointsProducts) return;
+
     if (smileUIInstance) {
       void globalThis.window.Smile?.fetchAllPointsProducts().then(
         (allPointsProducts) => {
@@ -15,7 +17,7 @@ export const usePointsProducts = (): PointsProduct[] | undefined => {
         }
       );
     }
-  }, [smileUIInstance]);
+  }, [smileUIInstance, pointsProducts]);
 
   return pointsProducts;
 };
