@@ -51,7 +51,7 @@ declare global {
     updated_at: string;
     points_price?: number;
     variable_points_step?: number;
-    variable_points_step_reward_value?: number;
+    variable_points_step_reward_value?: string;
     variable_points_min?: number;
     variable_points_max?: number;
   }
@@ -95,6 +95,7 @@ declare global {
       channel_key: string;
       customer_identity_jwt: string;
     }) => Promise<void>;
+    channel_key?: string;
     smile?: Smile;
   }
 
