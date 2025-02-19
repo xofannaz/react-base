@@ -13,22 +13,34 @@ const initializeSmileUI = () => {
 
 export const useSmileUI = (): SmileUI | undefined => {
   const [smileUIInstance, setSmileUIInstance] = useState<SmileUI | undefined>();
+  const [isSmileInstanceInitialized, setIsSmileInstanceInitialized] = useState(
+    Boolean(globalThis.window.SmileUI?.channel_key)
+  );
 
   useEffect(() => {
+    if (isSmileInstanceInitialized) return;
+
     const onSmileUIInstanceLoad = () => {
       initializeSmileUI();
 
       void globalThis.window.SmileUI?.ready().then((instance) => {
         setSmileUIInstance(instance);
+        setIsSmileInstanceInitialized(true);
       });
     };
 
     if (globalThis.window.SmileUI) {
       onSmileUIInstanceLoad();
     } else {
-      document.addEventListener("smile-ui-loaded", onSmileUIInstanceLoad);
+      document.addEventListener("smile-ui-loaded", onSmileUIInstanceLoad, {
+        once: true,
+      });
     }
-  }, []);
+
+    return () => {
+      document.removeEventListener("smile-ui-loaded", onSmileUIInstanceLoad);
+    };
+  }, [smileUIInstance, isSmileInstanceInitialized]);
 
   return smileUIInstance;
 };
