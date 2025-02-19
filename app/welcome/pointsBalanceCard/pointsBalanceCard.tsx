@@ -1,8 +1,21 @@
 import { InvestmentIllustration } from "~/assets";
-import { useCustomer } from "~/hooks/useCustomer";
+import { useCustomer, useIsAdmin, useSetModalSettings } from "~/hooks";
+import { ManualPointsIssuingModal } from "./manualPointsIssuingModal/manualPointsIssuingModal";
 
 export const PointsBalanceCard = () => {
   const customer = useCustomer();
+  const isAdmin = useIsAdmin();
+  const setModalSettings = useSetModalSettings();
+
+  const handleManualPointsIssuing = () => {
+    setModalSettings({
+      content: (
+        <ManualPointsIssuingModal
+          currentBalance={Number(customer?.points_balance)}
+        />
+      ),
+    });
+  };
 
   if (!customer) {
     return <div className="skeleton h-90" />;
@@ -26,6 +39,18 @@ export const PointsBalanceCard = () => {
           {customer.points_balance}
           <span className="text-xl">pts.</span>
         </p>
+        <div className="card-action flex justify-end">
+          {isAdmin ? (
+            <button
+              onClick={handleManualPointsIssuing}
+              className="btn btn-primary"
+            >
+              Issue points
+            </button>
+          ) : (
+            <></>
+          )}
+        </div>
       </div>
     </div>
   );

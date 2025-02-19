@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { GiftIllustration } from "~/assets";
+import { ToastTypes } from "~/components/toast";
+import { useSetToastSettings } from "~/hooks";
 import {
   getRandomInteger,
   MATH_OPERATION_TO_SYMBOL,
@@ -16,6 +18,7 @@ export interface MathChallengeCardProps {
 export const MathChallengeCard = ({
   operation = AvailableMathOperations.Add,
 }: MathChallengeCardProps) => {
+  const setToastSettings = useSetToastSettings();
   const [leftOperationMember, setLeftOperationMember] = useState(
     getRandomInteger()
   );
@@ -30,9 +33,21 @@ export const MathChallengeCard = ({
 
   const onSubmitGuess = (hasAnsweredCorrectly: boolean) => {
     if (hasAnsweredCorrectly) {
-      // TODO: give feedback
+      setToastSettings({
+        content: {
+          title: "Congratulations",
+          body: "You've just earned 50 points!",
+        },
+        type: ToastTypes.Success,
+      });
     } else {
-      // TODO: give negative feedback
+      setToastSettings({
+        content: {
+          title: "Too bad",
+          body: "Your answer is wrong. Better luck on next try",
+        },
+        type: ToastTypes.Error,
+      });
     }
 
     resetOperation();

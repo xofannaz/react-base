@@ -4,7 +4,7 @@ import {
   HashlinkMenuVariants,
   type HashlinkMenuItem,
 } from "~/components";
-import { useCustomer } from "~/hooks/useCustomer";
+import { useCustomer } from "~/hooks";
 
 export interface NavbarProps {
   menuItems: HashlinkMenuItem[];

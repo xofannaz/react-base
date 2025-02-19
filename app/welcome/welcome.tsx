@@ -1,5 +1,5 @@
 import type { HashlinkMenuItem } from "~/components";
-import { PageTemplate } from "~/components";
+import { Modal, PageTemplate, Toast } from "~/components";
 import { MathChallengeCard } from "./mathChallengeCard";
 import { PointsBalanceCard } from "./pointsBalanceCard";
 import { PointsProductsCard } from "./pointsProductsCard";
@@ -9,10 +9,13 @@ export const Welcome = () => {
   const menuItems: HashlinkMenuItem[] = [
     { label: "Check balance", href: "#balance" },
     { label: "Earn points", href: "#earn" },
+    { label: "Redeem rewards", href: "#products" },
   ];
 
   return (
     <PageTemplate navbarProps={{ menuItems }}>
+      <Modal />
+      <Toast />
       <WelcomeBanner />
       <div className="divider my-16 w-[80%] self-auto">{"Let's begin!"}</div>
       <div className="grid lg:grid-cols-2 grid-cols-1 gap-8 w-full px-4">

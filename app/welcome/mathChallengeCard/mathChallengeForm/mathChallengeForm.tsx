@@ -70,7 +70,6 @@ export const MathChallengeForm = ({
       </form>
       <div className="flex justify-end">
         <button
-          type="submit"
           className="btn btn-primary"
           disabled={isNaN(Number(guess))}
           onClick={onSubmitGuess}
