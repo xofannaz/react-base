@@ -11,11 +11,11 @@ export const usePointsProducts = (): PointsProduct[] | undefined => {
     if (pointsProducts) return;
 
     if (smileUIInstance) {
-      void globalThis.window.Smile?.fetchAllPointsProducts().then(
-        (allPointsProducts) => {
+      void smileUIInstance.smile
+        ?.fetchAllPointsProducts()
+        .then((allPointsProducts) => {
           setPointsProducts(allPointsProducts);
-        }
-      );
+        });
     }
   }, [smileUIInstance, pointsProducts]);
 
