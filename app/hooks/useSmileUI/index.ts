@@ -1,1 +1,1 @@
-export { useSmileUI } from "./useSmileUi";
+export { useSmileUI } from "./useSmileUI";
