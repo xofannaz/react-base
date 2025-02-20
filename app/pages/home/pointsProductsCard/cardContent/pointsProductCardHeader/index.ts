@@ -1,0 +1,1 @@
+export { PointsProductCardHeader } from "./pointsProductCardHeader";

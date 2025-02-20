@@ -1,14 +1,17 @@
-import { Welcome } from "../welcome/welcome";
+import { HomePage } from "../pages";
 import type { Route } from "./+types/home";
 
 // eslint-disable-next-line no-empty-pattern
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "Customer rewards platform" },
+    {
+      name: "description",
+      content: "Use your points to redeem rewards and more!",
+    },
   ];
 }
 
 export default function Home() {
-  return <Welcome />;
+  return <HomePage />;
 }

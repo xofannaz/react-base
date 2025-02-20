@@ -3,6 +3,8 @@
     "dbaeumer.vscode-eslint",
     "csstools.postcss",
     "esbenp.prettier-vscode",
-    "eamodio.gitlens"
+    "eamodio.gitlens",
+    "bradlc.vscode-tailwindcss",
+    "stivo.tailwind-fold"
   ]
 }

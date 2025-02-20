@@ -10,7 +10,6 @@
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev",
-    "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
     "test": "vitest",
     "coverage": "vitest run --coverage",
@@ -19,9 +18,12 @@
     "postinstall": "husky"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@react-router/node": "^7.1.5",
     "@react-router/serve": "^7.1.5",
+    "axios": "^1.7.9",
     "isbot": "^5.1.17",
+    "jotai": "^2.12.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router": "^7.1.5"

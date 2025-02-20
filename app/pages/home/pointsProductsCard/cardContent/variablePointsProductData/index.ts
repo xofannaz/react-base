@@ -1,0 +1,1 @@
+export { VariablePointsProductData } from "./variablePointsProduct";
