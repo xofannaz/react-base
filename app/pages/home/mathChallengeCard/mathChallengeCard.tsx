@@ -72,7 +72,7 @@ export const MathChallengeCard = ({
         <p className="text-base-content">
           Answer the math question to receive 50 points
         </p>
-        <p className="text-6xl text-primary lg:text-left text-center">
+        <p className="lg:text-6xl text-4xl text-primary lg:text-left text-center">
           {`${String(leftOperationMember)} ${
             MATH_OPERATION_TO_SYMBOL[operation]
           } ${String(rightOperationMember)} = ?`}

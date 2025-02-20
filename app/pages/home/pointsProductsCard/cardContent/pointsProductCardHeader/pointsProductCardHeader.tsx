@@ -4,7 +4,7 @@ export const PointsProductCardHeader = ({
   product: PointsProduct;
 }) => (
   <div className="flex items-center">
-    <figure className="mr-4">
+    <figure className="lg:block hidden mr-4">
       <img
         alt=""
         src={product.reward.image_url}

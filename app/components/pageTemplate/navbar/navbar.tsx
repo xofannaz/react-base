@@ -15,7 +15,7 @@ export const Navbar = ({ menuItems }: NavbarProps) => {
 
   return (
     <div className="navbar h-[4] bg-base-200 lg:px-8 py-0">
-      <div className="navbar-start">
+      <div className="navbar-start lg:w-[50%] w-[80%]">
         <ShoppingBagIcon
           stroke="currentColor"
           className="hidden lg:block h-5 w-5 mr-4"
@@ -26,7 +26,7 @@ export const Navbar = ({ menuItems }: NavbarProps) => {
             items={menuItems}
           />
         </div>
-        <p className="lg:text-xl">Customer Rewards</p>
+        <p className="lg:text-xl md:text-md">Customer Rewards</p>
       </div>
       <div className="navbar-center hidden lg:flex">
         <HashlinkMenu
