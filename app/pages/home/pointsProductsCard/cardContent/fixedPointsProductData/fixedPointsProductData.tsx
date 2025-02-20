@@ -36,7 +36,7 @@ export const FixedPointsProductData = ({
       )}
       <div className="mt-8">
         <div
-          className="tooltip hover:tooltip-open tooltip-right"
+          className={`${!isRedeemable ? "tooltip" : ""} tooltip-right`}
           data-tip="You don't have enough points!"
         >
           <button
