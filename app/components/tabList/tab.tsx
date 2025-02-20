@@ -17,7 +17,7 @@ export const Tab = ({
     />
     <div
       role="tabpanel"
-      className="tab-content bg-base-300 lg:max-w-none max-w-80 shadow-xl"
+      className="tab-content bg-base-300 lg:max-w-none md:max-w-none max-w-80 shadow-xl"
     >
       {children}
     </div>
