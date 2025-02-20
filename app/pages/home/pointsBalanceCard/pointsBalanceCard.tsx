@@ -1,23 +1,30 @@
 import { InvestmentIllustration } from "~/assets";
-import { useCustomer, useIsAdmin, useSetModalSettings } from "~/hooks";
+import {
+  useCustomer,
+  useIsAdmin,
+  useReloadCustomer,
+  useSetModalSettings,
+} from "~/hooks";
 import { ManualPointsIssuingModal } from "./manualPointsIssuingModal/manualPointsIssuingModal";
 
 export const PointsBalanceCard = () => {
-  const customer = useCustomer();
   const isAdmin = useIsAdmin();
   const setModalSettings = useSetModalSettings();
+  const customer = useCustomer();
+  const { reloadCustomer, isFetchingCustomer } = useReloadCustomer();
 
   const handleManualPointsIssuing = () => {
     setModalSettings({
       content: (
         <ManualPointsIssuingModal
           currentBalance={Number(customer?.points_balance)}
+          onSuccess={reloadCustomer}
         />
       ),
     });
   };
 
-  if (!customer) {
+  if (!customer || isFetchingCustomer) {
     return <div className="skeleton h-90" />;
   }
 

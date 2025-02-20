@@ -7,7 +7,7 @@ declare type SmileUIDeepLink =
 
 declare global {
   interface Customer {
-    id: string;
+    id: number;
     points_balance: number;
     referral_url: string;
     state: "member" | "candidate" | "enabled";
@@ -33,17 +33,18 @@ declare global {
   }
 
   interface RewardFulfillment {
-    id: string;
+    id: number;
     name: string;
     code: string;
     image_url: string;
-    used_at: string;
-    created_at: string;
     updated_at: string;
+    created_at: string;
+    usage_instructions: string;
+    used_at?: string;
   }
 
   interface PointsProduct {
-    id: string;
+    id: number;
     exchange_type: "fixed" | "variable";
     exchange_description: string;
     reward: Reward;
@@ -56,10 +57,21 @@ declare global {
     variable_points_max?: number;
   }
 
+  interface PointsTransaction {
+    id: number;
+    customer_id: number;
+    points_change: number;
+    created_at: string;
+    updated_at: string;
+    internal_note?: string;
+    description?: string;
+  }
+
   interface PointsPurchase {
-    id: string;
-    points_product_id: string;
+    id: number;
+    points_product_id: number;
     points_spent: number;
+    fulfilled_reward: RewardFulfillment;
     reward_fulfillment: RewardFulfillment;
     created_at: string;
     updated_at: string;

@@ -5,7 +5,7 @@ import { PointsBalanceCard } from "./pointsBalanceCard";
 import { PointsProductsCard } from "./pointsProductsCard";
 import { WelcomeBanner } from "./welcomeBanner";
 
-export const Welcome = () => {
+export const HomePage = () => {
   const menuItems: HashlinkMenuItem[] = [
     { label: "Check balance", href: "#balance" },
     { label: "Earn points", href: "#earn" },

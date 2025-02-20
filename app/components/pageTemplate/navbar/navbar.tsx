@@ -26,7 +26,7 @@ export const Navbar = ({ menuItems }: NavbarProps) => {
             items={menuItems}
           />
         </div>
-        <p className="text-xl">Customer Rewards</p>
+        <p className="lg:text-xl">Customer Rewards</p>
       </div>
       <div className="navbar-center hidden lg:flex">
         <HashlinkMenu

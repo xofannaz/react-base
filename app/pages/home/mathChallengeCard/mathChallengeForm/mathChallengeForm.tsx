@@ -1,6 +1,10 @@
 import { useState } from "react";
+import { useReloadCustomer } from "~/hooks";
+import { issuePoints } from "~/services";
 import { type MathChallengeFormProps } from "./mathChallengeForm.types";
 import { performMathOperation } from "./mathChallengeForm.utils";
+
+const MATH_CHALLENGE_BONUS_POINTS = 50;
 
 export const MathChallengeForm = ({
   leftTerm,
@@ -9,32 +13,31 @@ export const MathChallengeForm = ({
   onChange,
   onSubmit,
 }: MathChallengeFormProps) => {
-  const [guess, setGuess] = useState<number>(NaN);
+  const [guess, setGuess] = useState("");
   const [hasFailed, setHasFailed] = useState(false);
+  const { reloadCustomer } = useReloadCustomer();
   const expectedAnswer = performMathOperation(leftTerm, rightTerm, operation);
 
   const onChangeGuess = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value: guessedNumber } = event.target;
 
-    if (guessedNumber === "") {
-      setGuess(NaN);
-    } else {
-      setGuess(Number(guessedNumber));
-    }
-
+    setGuess(guessedNumber);
     onChange?.(Number(guessedNumber));
   };
 
   const onSubmitGuess = () => {
-    const isCorrectAnswer = !isNaN(guess) && guess === expectedAnswer;
+    const isCorrectAnswer = Number(guess) === expectedAnswer;
 
     if (isCorrectAnswer) {
       setHasFailed(false);
+      void issuePoints({ pointsChange: MATH_CHALLENGE_BONUS_POINTS }).then(
+        reloadCustomer
+      );
     } else {
       setHasFailed(true);
     }
 
-    setGuess(NaN);
+    setGuess("");
     onSubmit?.(isCorrectAnswer);
   };
 
@@ -51,12 +54,11 @@ export const MathChallengeForm = ({
           type="text"
           placeholder="Result"
           maxLength={5}
-          pattern="^[0-9]*$"
           className={`input input-bordered w-full max-w-xs ${
             hasFailed ? "input-error" : ""
           }`}
           onChange={onChangeGuess}
-          value={guess || ""}
+          value={!isNaN(Number(guess)) ? guess : ""}
         />
         <div className="label">
           {hasFailed ? (
@@ -71,7 +73,7 @@ export const MathChallengeForm = ({
       <div className="flex justify-end">
         <button
           className="btn btn-primary"
-          disabled={isNaN(Number(guess))}
+          disabled={!guess}
           onClick={onSubmitGuess}
         >
           Submit Guess

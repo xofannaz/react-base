@@ -8,5 +8,5 @@ export interface TabProps {
 }
 
 export interface TabListProps {
-  tabs: (TabProps & { id: string })[];
+  tabs: (TabProps & { id: number })[];
 }

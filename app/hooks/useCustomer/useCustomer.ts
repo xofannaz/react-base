@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useAtom } from "jotai";
+import { useEffect } from "react";
 import { useSmileUI } from "../useSmileUI";
+import { CustomerAtom } from "./customerAtom";
+import { useReloadCustomer } from "./useReloadCustomer";
 
 export const useCustomer = (): Customer | undefined => {
   const smileUIInstance = useSmileUI();
-  const [customer, setCustomer] = useState<Customer | undefined>(
-    globalThis.window.SmileUI?.smile?.customer
-  );
+  const { isFetchingCustomer } = useReloadCustomer();
+  const [customer, setCustomer] = useAtom(CustomerAtom);
 
   useEffect(() => {
     if (customer) return;
@@ -15,7 +17,9 @@ export const useCustomer = (): Customer | undefined => {
         setCustomer(customer);
       });
     }
-  }, [smileUIInstance, customer]);
+  }, [smileUIInstance, customer, setCustomer]);
+
+  if (isFetchingCustomer) return;
 
   return customer;
 };

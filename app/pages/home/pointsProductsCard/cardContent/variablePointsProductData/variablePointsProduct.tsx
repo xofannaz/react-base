@@ -1,5 +1,6 @@
 import { TextEmphasis } from "~/components";
-import { useCloseModal, useCustomer, useSetModalSettings } from "~/hooks";
+import { useCustomer, useSetModalSettings } from "~/hooks";
+import { PurchaseConfirmationModal } from "../purchaseConfirmationModal";
 
 export const VariablePointsProductData = ({
   product,
@@ -7,7 +8,6 @@ export const VariablePointsProductData = ({
   product: PointsProduct;
 }) => {
   const customer = useCustomer();
-  const closeModal = useCloseModal();
   const setModalSettings = useSetModalSettings();
 
   const isRedeemable =
@@ -16,11 +16,7 @@ export const VariablePointsProductData = ({
   // TODO: let user choose the amount
   const onRewardRedeeming = () => {
     setModalSettings({
-      content: "Are you sure you want spend these points?",
-      actions: {
-        primary: { label: "Yes, I do", callback: closeModal },
-        secondary: { label: "I'll think again", callback: closeModal },
-      },
+      content: <PurchaseConfirmationModal product={product} />,
     });
   };
 
