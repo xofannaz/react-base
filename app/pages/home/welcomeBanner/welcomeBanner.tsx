@@ -9,7 +9,7 @@ export const WelcomeBanner = () => (
         alt=""
       />
       <div className="px-8 lg:w-[50%] text-center lg:text-left">
-        <h1 className="text-4xl font-bold">
+        <h1 className="lg:text-4xl text-2xl font-bold">
           Welcome to your rewards platform!
         </h1>
         <p className="py-6">

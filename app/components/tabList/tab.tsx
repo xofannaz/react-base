@@ -15,7 +15,10 @@ export const Tab = ({
       aria-label={label}
       defaultChecked={isDefaultChecked}
     />
-    <div role="tabpanel" className="tab-content bg-base-300 shadow-xl">
+    <div
+      role="tabpanel"
+      className="tab-content bg-base-300 lg:max-w-none md:max-w-none max-w-80 shadow-xl"
+    >
       {children}
     </div>
   </>

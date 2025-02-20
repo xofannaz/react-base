@@ -5,9 +5,9 @@ import { VariablePointsProductData } from "./variablePointsProductData";
 
 export const CardContent = ({ product }: { product: PointsProduct }) => (
   <div className="flex w-full">
-    <div className="w-full p-10">
+    <div className="w-full lg:p-10 p-2">
       <PointsProductCardHeader product={product} />
-      <div className="pl-28 pt-8 pb-4">
+      <div className="lg:pl-28 pt-8 pb-4">
         {product.exchange_type === "variable" ? (
           <VariablePointsProductData product={product} />
         ) : (

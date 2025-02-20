@@ -41,8 +41,8 @@ export const PointsBalanceCard = () => {
         />
       </figure>
       <div className="card-body">
-        <h2 className="card-title text-4xl">Points balance</h2>
-        <p className="text-9xl text-primary lg:text-left text-center">
+        <h2 className="card-title lg:text-4xl text-2xl">Points balance</h2>
+        <p className="lg:text-9xl text-4xl text-primary lg:text-left text-center">
           {customer.points_balance}
           <span className="text-xl">pts.</span>
         </p>
