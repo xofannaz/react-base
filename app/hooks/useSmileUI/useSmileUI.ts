@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
+import { useAtom } from "jotai";
+import { useEffect } from "react";
 import { useAuthentication } from "../useAuthentication";
+import { SmileUIAtom } from "./smileUIAtom";
 
 const PUBLIC_CHANNEL_KEY = String(import.meta.env.VITE_PUBLIC_CHANNEL_KEY);
 
@@ -11,22 +13,19 @@ const initializeSmileUI = (authToken: string) => {
 };
 
 export const useSmileUI = (): SmileUI | undefined => {
-  const [smileUIInstance, setSmileUIInstance] = useState<SmileUI | undefined>();
-  const [isSmileInstanceInitialized, setIsSmileInstanceInitialized] = useState(
-    Boolean(globalThis.window.SmileUI?.channel_key)
-  );
-
-  const authToken = useAuthentication(isSmileInstanceInitialized);
+  const [smileUIInstance, setSmileUIInstance] = useAtom(SmileUIAtom);
+  const authToken = useAuthentication(Boolean(smileUIInstance));
 
   useEffect(() => {
-    if (isSmileInstanceInitialized || !authToken) return;
+    if (!authToken || smileUIInstance) {
+      return;
+    }
 
     const onSmileUIInstanceLoad = () => {
       initializeSmileUI(authToken);
 
       void globalThis.window.SmileUI?.ready().then((instance) => {
         setSmileUIInstance(instance);
-        setIsSmileInstanceInitialized(true);
       });
     };
 
@@ -41,7 +40,7 @@ export const useSmileUI = (): SmileUI | undefined => {
     return () => {
       document.removeEventListener("smile-ui-loaded", onSmileUIInstanceLoad);
     };
-  }, [smileUIInstance, isSmileInstanceInitialized, authToken]);
+  }, [authToken, smileUIInstance, setSmileUIInstance]);
 
   return smileUIInstance;
 };
